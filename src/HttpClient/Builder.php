@@ -3,8 +3,8 @@
 /*
  * A php library for using the Emarsys API.
  *
- * @link      https://github.com/quitoque/emarsys-php-client
- * @package   emarsys-php-client
+ * @link      https://github.com/quitoque/emarsys-sdk-client
+ * @package   emarsys-sdk-php
  * @license   MIT
  * @copyright Copyright (c) 2017 Quitoque <tech@quitoque.com>
  */
@@ -122,12 +122,16 @@ class Builder
             ));
 
             $this->addPlugin(new Plugin\BaseUriPlugin(
-                    UriFactoryDiscovery::find()->createUri('https://api.emarsys.net/api/v2'))
-            );
+                    UriFactoryDiscovery::find()->createUri('https://api.emarsys.net/api/v2')
+            ));
 
             $this->addPlugin(new Plugin\HeaderDefaultsPlugin(array(
-                'User-Agent' => 'emarsys-php-client (https://github.com/ck-developer/emarsys-php-client)',
+                'User-Agent' => 'emarsys-sdk-php (https://github.com/quitoque/emarsys-sdk-php)',
             )));
+
+            if (null !== $this->parameters['logger']) {
+                $this->addPlugin(new Plugin\LoggerPlugin($this->parameters['logger']));
+            }
 
             $this->httpClientModified = false;
             $this->pluginClient = new PluginClient($this->httpClient, $this->plugins);

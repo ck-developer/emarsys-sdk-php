@@ -3,8 +3,8 @@
 /*
  * A php library for using the Emarsys API.
  *
- * @link      https://github.com/quitoque/emarsys-php-client
- * @package   emarsys-php-client
+ * @link      https://github.com/quitoque/emarsys-sdk-client
+ * @package   emarsys-sdk-php
  * @license   MIT
  * @copyright Copyright (c) 2017 Quitoque <tech@quitoque.com>
  */
@@ -17,6 +17,7 @@ use Emarsys\Exception\Api\NotFoundException;
 use Emarsys\HttpClient\Builder;
 use Http\Client\Common\PluginClient;
 use Http\Message\MessageFactory;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class Emarsys.
@@ -43,11 +44,17 @@ class Emarsys
      */
     private $requestFactory;
 
-    public function __construct($username, $secret)
+    /**
+     * @var array
+     */
+    private $parameters;
+
+    public function __construct($username, $secret, LoggerInterface $logger = null)
     {
         $this->parameters = array(
             'username' => $username,
             'secret' => $username,
+            'logger' => $logger,
         );
     }
 

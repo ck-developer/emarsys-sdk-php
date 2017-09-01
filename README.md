@@ -1,4 +1,4 @@
-# Emarsys php client
+# Emarsys sdk php
 
 [![Latest Stable Version](https://poser.pugx.org/ck-developer/emarsys-php-client/v/stable?format=flat-square)](https://packagist.org/packages/ck-developer/emarsys-php-client)
 [![Latest Unstable Version](https://poser.pugx.org/ck-developer/emarsys-php-client/v/unstable?format=flat-square)](https://packagist.org/packages/ck-developer/emarsys-php-client)
