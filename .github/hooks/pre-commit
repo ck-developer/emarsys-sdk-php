@@ -45,6 +45,9 @@ else
 	echo "no php file changed."
 fi
 
+echo "------------------------------"
+echo "Running Phpunit tests..."
+echo "------------------------------"
 php ${PHPUNIT}
 if [ $? != 0 ]
 then
